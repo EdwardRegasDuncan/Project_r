@@ -57,6 +57,77 @@ body {
   border-bottom: 1px solid #ccc;
 }
 
+.skill-triggers-window {
+  max-width: 600px;
+  height: 100%;
+  max-height: fit-content;
+  margin: 0 auto;
+}
+
+.skill-triggers-window h2 {
+  text-align: center;
+}
+
+.skill-triggers-window table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  table-layout: fixed;
+}
+
+.skill-triggers-window button {
+  width: 50%;
+  border-collapse: collapse;
+  margin-bottom: 2px;
+}
+
+.skill-triggers-window th, .skill-triggers-window td {
+  padding: 8px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+/* Set specific widths for each column */
+.skill-triggers-window th:nth-child(1),
+.skill-triggers-window td:nth-child(1) {
+  width: 5%; /* Adjust as needed */
+}
+
+.skill-triggers-window th:nth-child(2),
+.skill-triggers-window td:nth-child(2) {
+  width: 30%; /* Adjust as needed */
+}
+
+.skill-triggers-window th:nth-child(3),
+.skill-triggers-window td:nth-child(3) {
+  width: 50%; /* Adjust as needed */
+}
+
+.skill-triggers-window th:nth-child(4),
+.skill-triggers-window td:nth-child(4) {
+  width: 20%; /* Adjust as needed */
+  text-align: left;
+}
+
+.add-skill-trigger {
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+}
+
+.add-skill-trigger button {
+  padding: 8px 16px;
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.add-skill-trigger button:hover {
+  background-color: #0056b3;
+}
+
 /* Message input styles */
 form {
   display: flex;

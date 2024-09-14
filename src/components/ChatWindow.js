@@ -4,6 +4,7 @@ import MessageList from "./MessageList";
 import MessageInput from "./MessageInput";
 import UserList from "./UserList";
 import DiceRoller from "./DiceRoller";
+import SkillTriggersWindow from "./SkillTriggersWindow";
 
 const socket = io("http://localhost:3001");
 
@@ -26,11 +27,11 @@ const ChatWindow = () => {
       setClients(clients);
     });
 
-    socket.on("roll", ({id, count, sides, result}) => {
-      console.log(`Received roll: ${count}d${sides} = ${result}`);
+    socket.on("roll", ({id, count, sides, modifier, result}) => {
+      console.log(`Received roll: ${count}d${sides} + ${modifier} = ${result}`);
       setMessages((messages) => [
         ...messages,
-        { id, message: `rolled ${count}d${sides} and got ${result}` },
+        { id, message: `rolled ${count}d${sides} + ${modifier} and got ${result}` },
       ]);
     });
 
@@ -46,9 +47,9 @@ const ChatWindow = () => {
     socket.emit("message", message);
   };
 
-  const rollDice = (count, sides) => {
-    console.log(`Rolling ${count}d${sides}...`);
-    socket.emit("roll", count, sides);
+  const rollDice = (count, sides, modifier) => {
+    console.log(`Rolling ${count}d${sides} + ${modifier}...`);
+    socket.emit("roll", count, sides, modifier);
   };
 
   return (
@@ -57,7 +58,7 @@ const ChatWindow = () => {
         <MessageList messages={messages} />
         <div className="utilities">
           <UserList clients={clients} />
-          <DiceRoller rollDice={rollDice} />
+          <SkillTriggersWindow rollDice={rollDice}/>
         </div>
       </div>
       <MessageInput sendMessage={sendMessage} />
